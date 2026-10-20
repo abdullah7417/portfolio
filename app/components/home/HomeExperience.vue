@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { experiences } from '~/data/portfolio'
+import { education, experiences } from '~/data/portfolio'
 
 const timeline = useTemplateRef<HTMLElement>('timeline')
 const { scrollYProgress } = useScroll({ target: timeline, offset: ['start 75%', 'end 55%'] })
@@ -170,6 +170,64 @@ function toggle(index: number) {
           </div>
         </li>
       </ol>
+
+      <div
+        v-if="education.length"
+        class="mt-8"
+      >
+        <AppReveal
+          :y="12"
+          :blur="false"
+        >
+          <h3 class="mb-6 flex items-center gap-3 font-mono text-sm text-primary">
+            <span
+              class="h-px w-8 bg-primary/60"
+              aria-hidden="true"
+            />
+            Education
+          </h3>
+        </AppReveal>
+
+        <ul class="grid gap-6 md:grid-cols-2">
+          <AppReveal
+            v-for="(item, index) in education"
+            :key="`${item.school}-${item.degree}`"
+            as="li"
+            :delay="index * 0.12"
+          >
+            <AppTiltCard
+              :max="4"
+              class="glass-card h-full p-6 transition-colors hover:border-primary/30"
+            >
+              <div class="flex items-start gap-4">
+                <div class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                  <UIcon
+                    name="i-lucide-graduation-cap"
+                    class="size-5 text-primary"
+                  />
+                </div>
+                <div>
+                  <p class="font-mono text-xs text-primary">
+                    {{ item.start }} — {{ item.end }}
+                  </p>
+                  <h4 class="mt-1 text-lg font-semibold text-highlighted">
+                    {{ item.school }}
+                  </h4>
+                  <p class="text-sm text-muted">
+                    {{ item.degree }}
+                  </p>
+                  <p
+                    v-if="item.location"
+                    class="mt-1 text-xs text-muted/80"
+                  >
+                    {{ item.location }}
+                  </p>
+                </div>
+              </div>
+            </AppTiltCard>
+          </AppReveal>
+        </ul>
+      </div>
     </div>
   </section>
 </template>

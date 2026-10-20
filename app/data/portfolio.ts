@@ -1,5 +1,5 @@
 // All portfolio content lives here. Edit this file to update the site.
-import type { Experience, NavItem, Profile, Project, Service, SkillGroup } from '~~/shared/types/portfolio'
+import type { Education, Experience, NavItem, Profile, Project, Service, SkillGroup } from '~~/shared/types/portfolio'
 
 export const profile: Profile = {
   firstName: 'Abdullah',
@@ -15,6 +15,7 @@ export const profile: Profile = {
   location: 'Mansoura, Egypt',
   email: 'abdullahmohamedf330@gmail.com',
   phone: '+201144484245',
+  resumeUrl: '/Abdullah-Mohamed-Jr-Frontend-developer.pdf',
   about: [
     'I\'m a passionate Frontend Developer with hands-on experience building dynamic, user-friendly web applications with Vue.js, Nuxt and Angular. My expertise lies in creating responsive designs and implementing best practices to deliver seamless user experiences.',
     'Since September 2024 I\'ve been working as a Frontend Developer at Codebase, specializing in Vue.js, Nuxt, TailwindCSS and Bootstrap, and contributing to the development of several large-scale projects.',
@@ -191,5 +192,15 @@ export const experiences: Experience[] = [
     highlights: [
       'Contributed to the development of several large-scale projects.',
     ],
+  },
+]
+
+export const education: Education[] = [
+  {
+    school: 'Mansoura University',
+    degree: 'Bachelor of Computer and Information Science',
+    start: '2017',
+    end: '2021',
+    location: 'Mansoura, Egypt',
   },
 ]

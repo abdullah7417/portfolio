@@ -63,3 +63,11 @@ export interface NavItem {
   label: string
   icon: string
 }
+
+export interface Education {
+  school: string
+  degree: string
+  start: string
+  end: string
+  location?: string
+}
