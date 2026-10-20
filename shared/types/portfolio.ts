@@ -43,6 +43,8 @@ export interface Project {
   liveUrl?: string
   codeUrl?: string
   image?: string
+  /** Shown under the "React Landing" filter chip */
+  reactLanding?: boolean
 }
 
 export interface Experience {

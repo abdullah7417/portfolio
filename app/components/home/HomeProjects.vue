@@ -2,12 +2,20 @@
 import type { Project } from '~~/shared/types/portfolio'
 import { projects } from '~/data/portfolio'
 
-const filters = ['All', ...new Set(projects.flatMap(project => project.tags))]
+const REACT_LANDING = 'React Landing'
+
+const filters = [
+  'All',
+  ...(projects.some(project => project.reactLanding) ? [REACT_LANDING] : []),
+  ...new Set(projects.flatMap(project => project.tags)),
+]
 const activeFilter = ref('All')
 
-const filtered = computed(() =>
-  activeFilter.value === 'All' ? projects : projects.filter(project => project.tags.includes(activeFilter.value)),
-)
+const filtered = computed(() => {
+  if (activeFilter.value === 'All') return projects
+  if (activeFilter.value === REACT_LANDING) return projects.filter(project => project.reactLanding)
+  return projects.filter(project => project.tags.includes(activeFilter.value))
+})
 
 const selected = shallowRef<Project | null>(null)
 const modalOpen = ref(false)
