@@ -9,7 +9,6 @@ export const profile: Profile = {
   roles: [
     'Frontend Developer',
     'Vue.js & Nuxt Developer',
-    'Angular Developer',
     'Responsive UI Builder',
   ],
   location: 'Mansoura, Egypt',
@@ -83,7 +82,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Languages & Frameworks',
     icon: 'i-lucide-code-xml',
-    skills: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'TypeScript', 'Vue.js', 'Nuxt', 'Angular'],
+    skills: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'TypeScript', 'Vue.js', 'Nuxt','React'],
   },
   {
     title: 'Styling & UI',
@@ -93,12 +92,11 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Tools & Practices',
     icon: 'i-lucide-wrench',
-    skills: ['Git', 'GitHub', 'REST APIs', 'JWT / OAuth', 'Clean Code', 'Technical Writing'],
+    skills: ['Git', 'GitHub', 'REST APIs', 'JWT / OAuth', 'Clean Code', 'Technical Writing' , 'Vibe Coding AI'],
   },
 ]
 
 // Client projects come from the CV; tags combine the CV with what each live site is built on.
-// `reactLanding` projects appear under the "React Landing" filter.
 export const projects: Project[] = [
   {
     emoji: '💪',
@@ -153,7 +151,6 @@ export const projects: Project[] = [
     tags: ['React', 'Vite'],
     liveUrl: 'https://mobadra.fitxpert.team/',
     image: '/images/projects/mobadra-fitxpert.jpg',
-    reactLanding: true,
   },
   {
     emoji: '📊',
@@ -161,6 +158,9 @@ export const projects: Project[] = [
     subtitle: 'Affiliate dashboard',
     description: 'A responsive affiliate dashboard built with React and AI-assisted coding, letting affiliates track referrals, monitor commissions and wallet balances, review transactions and manage payout history.',
     tags: ['React', 'AI-assisted'],
+    liveUrl: 'https://affiliate.salahseleemteam.com/',
+    image: '/images/projects/sst_dashboard.png',
+
   },
   {
     emoji: '🎯',
@@ -235,7 +235,7 @@ export const projects: Project[] = [
     codeUrl: 'https://github.com/abdullah7417/contracting',
     image: '/images/projects/contracting.png',
   },
-   {
+  {
     emoji: '🍽️',
     title: 'Grilli',
     subtitle: 'Restaurant template',

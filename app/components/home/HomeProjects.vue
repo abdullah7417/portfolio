@@ -2,19 +2,25 @@
 import type { Project } from '~~/shared/types/portfolio'
 import { projects } from '~/data/portfolio'
 
-const REACT_LANDING = 'React Landing'
+// Filter chip label → project tags it matches
+const FILTER_TAGS: Record<string, string[]> = {
+  'Nuxt': ['Nuxt'],
+  'Vue': ['Vue.js'],
+  'JavaScript': ['JavaScript'],
+  'HTML5': ['HTML'],
+  'CSS3': ['CSS'],
+  'TailwindCSS': ['Tailwind CSS'],
+  'Blade': ['Blade'],
+  'React & AI-assisted': ['React', 'AI-assisted'],
+}
 
-const filters = [
-  'All',
-  ...(projects.some(project => project.reactLanding) ? [REACT_LANDING] : []),
-  ...new Set(projects.flatMap(project => project.tags)),
-]
+const filters = ['All', ...Object.keys(FILTER_TAGS)]
 const activeFilter = ref('All')
 
 const filtered = computed(() => {
-  if (activeFilter.value === 'All') return projects
-  if (activeFilter.value === REACT_LANDING) return projects.filter(project => project.reactLanding)
-  return projects.filter(project => project.tags.includes(activeFilter.value))
+  const tags = FILTER_TAGS[activeFilter.value]
+  if (!tags) return projects
+  return projects.filter(project => project.tags.some(tag => tags.includes(tag)))
 })
 
 const selected = shallowRef<Project | null>(null)
