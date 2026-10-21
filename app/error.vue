@@ -26,7 +26,7 @@ useSeoMeta({
           {{ is404 ? 'Oops! Page not found' : 'Something went wrong' }}
         </h1>
         <UButton
-          class="mt-8 rounded-full px-6"
+          class="mt-8 rounded-pill px-6"
           size="lg"
           icon="i-lucide-arrow-left"
           label="Return to Home"

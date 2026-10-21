@@ -56,8 +56,8 @@ function openProject(project: Project) {
             v-for="filter in filters"
             :key="filter"
             type="button"
-            class="relative rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-200"
-            :class="activeFilter === filter ? 'text-inverted' : 'bg-muted text-muted hover:text-highlighted'"
+            class="relative rounded-pill px-4 py-1.5 text-sm font-medium transition-colors duration-200"
+            :class="activeFilter === filter ? 'text-on-primary' : 'bg-muted text-muted hover:text-highlighted'"
             :aria-pressed="activeFilter === filter"
             @click="activeFilter = filter"
           >
@@ -65,7 +65,7 @@ function openProject(project: Project) {
               v-if="activeFilter === filter"
               as="span"
               layout-id="filter-pill"
-              class="bg-gradient-primary absolute inset-0 rounded-full"
+              class="bg-gradient-primary absolute inset-0 rounded-pill"
               :transition="{ type: 'spring', stiffness: 400, damping: 32 }"
             />
             <span class="relative">{{ filter }}</span>

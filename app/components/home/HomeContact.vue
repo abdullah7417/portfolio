@@ -16,7 +16,7 @@ const rows = [
 ]
 
 const fieldUi = {
-  base: 'rounded-full bg-muted px-4 py-3 ring-default transition-all focus-visible:ring-2 focus-visible:ring-primary/40',
+  base: 'rounded-pill bg-muted px-4 py-3 ring-default transition-all focus-visible:ring-2 focus-visible:ring-primary/40',
 }
 
 async function onSubmit(event: FormSubmitEvent<ContactInput>) {
@@ -83,7 +83,7 @@ async function onSubmit(event: FormSubmitEvent<ContactInput>) {
               <button
                 v-if="row.copy"
                 type="button"
-                class="rounded-full p-2 text-muted opacity-0 transition-all group-hover:opacity-100 hover:bg-primary/10 hover:text-primary focus-visible:opacity-100 max-md:opacity-100"
+                class="rounded-pill p-2 text-muted opacity-0 transition-all group-hover:opacity-100 hover:bg-primary/10 hover:text-primary focus-visible:opacity-100 max-md:opacity-100"
                 :aria-label="`Copy ${row.label.toLowerCase()}`"
                 @click="copyValue(row.value, row.label)"
               >
@@ -152,7 +152,7 @@ async function onSubmit(event: FormSubmitEvent<ContactInput>) {
                 size="xl"
                 variant="none"
                 class="w-full"
-                :ui="{ base: 'resize-none rounded-3xl bg-muted px-4 py-3 ring-default transition-all focus-visible:ring-2 focus-visible:ring-primary/40' }"
+                :ui="{ base: 'resize-none rounded-pill-box bg-muted px-4 py-3 ring-default transition-all focus-visible:ring-2 focus-visible:ring-primary/40' }"
               />
             </UFormField>
 
@@ -160,7 +160,7 @@ async function onSubmit(event: FormSubmitEvent<ContactInput>) {
               <button
                 type="submit"
                 :disabled="submitting"
-                class="bg-gradient-primary inline-flex items-center gap-2 rounded-full px-8 py-3 font-medium text-inverted transition-shadow duration-300 hover:shadow-glow disabled:opacity-70"
+                class="btn-gradient inline-flex items-center gap-2 rounded-pill px-8 py-3 font-medium disabled:opacity-70"
               >
                 <AnimatePresence
                   mode="wait"

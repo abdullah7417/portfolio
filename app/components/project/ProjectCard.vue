@@ -38,7 +38,7 @@ const hiddenCount = computed(() => props.project.tags.length - visibleTags.value
       />
       <span
         v-if="hostname"
-        class="absolute top-2 left-2 rounded-full bg-default/75 px-2.5 py-0.5 font-mono text-[10px] text-default/90 backdrop-blur-sm"
+        class="absolute top-2 left-2 rounded-pill bg-default/75 px-2.5 py-0.5 font-mono text-[10px] text-default/90 backdrop-blur-sm"
       >
         {{ hostname }}
       </span>
@@ -86,13 +86,13 @@ const hiddenCount = computed(() => props.project.tags.length - visibleTags.value
       <li
         v-for="tag in visibleTags"
         :key="tag"
-        class="rounded bg-muted px-2 py-1 font-mono text-xs text-primary"
+        class="rounded-sm bg-muted px-2 py-1 font-mono text-xs text-primary"
       >
         {{ tag }}
       </li>
       <li
         v-if="hiddenCount > 0"
-        class="rounded bg-muted px-2 py-1 font-mono text-xs text-muted"
+        class="rounded-sm bg-muted px-2 py-1 font-mono text-xs text-muted"
       >
         +{{ hiddenCount }}
       </li>

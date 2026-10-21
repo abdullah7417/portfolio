@@ -24,7 +24,7 @@ import { profile } from '~/data/portfolio'
           >
             <div class="relative overflow-hidden rounded-2xl p-[2px]">
               <div
-                class="absolute -inset-full animate-spin-slow opacity-70 transition-opacity group-hover:opacity-100 motion-reduce:animate-none [background:conic-gradient(from_0deg,var(--ui-primary),transparent_30%,var(--color-azure),transparent_70%,var(--ui-primary))]"
+                class="absolute -inset-full animate-spin-slow opacity-70 transition-opacity group-hover:opacity-100 motion-reduce:animate-none [background:conic-gradient(from_0deg,var(--ui-primary),transparent_30%,var(--ui-secondary),transparent_70%,var(--ui-primary))]"
                 aria-hidden="true"
               />
               <NuxtImg
@@ -57,7 +57,7 @@ import { profile } from '~/data/portfolio'
               <li
                 v-for="chip in profile.chips"
                 :key="chip.label"
-                class="flex items-center gap-2 rounded-full border border-default bg-muted/50 px-4 py-1.5 text-sm text-muted"
+                class="flex items-center gap-2 rounded-pill border border-default bg-muted/50 px-4 py-1.5 text-sm text-muted"
               >
                 <UIcon
                   :name="chip.icon"

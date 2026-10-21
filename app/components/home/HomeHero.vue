@@ -55,7 +55,7 @@ const heroSocials = computed(() => [
       >
         <Motion
           as="div"
-          class="size-full rounded-full opacity-25 blur-2xl [background:radial-gradient(circle,color-mix(in_oklab,var(--color-azure)_45%,transparent),transparent_70%)]"
+          class="size-full rounded-full opacity-25 blur-2xl [background:radial-gradient(circle,color-mix(in_oklab,var(--ui-secondary)_45%,transparent),transparent_70%)]"
           :animate="reduced === 'reduce' ? undefined : { x: [0, -20, 0], y: [0, 30, 0], scale: [1, 1.15, 1] }"
           :transition="{ duration: 25, repeat: Infinity, ease: 'easeInOut' }"
         />
@@ -114,7 +114,7 @@ const heroSocials = computed(() => [
         <AppMagnetic>
           <a
             href="#projects"
-            class="bg-gradient-primary group inline-flex items-center gap-2 rounded-full px-8 py-3 font-medium text-inverted transition-shadow duration-300 hover:shadow-glow"
+            class="btn-gradient group inline-flex items-center gap-2 rounded-pill px-8 py-3 font-medium"
           >
             View Projects
             <UIcon
@@ -126,7 +126,7 @@ const heroSocials = computed(() => [
         <AppMagnetic>
           <a
             href="#contact"
-            class="inline-block rounded-full border border-primary px-8 py-3 font-medium text-primary transition-colors duration-300 hover:bg-primary/10"
+            class="inline-block rounded-pill border border-primary px-8 py-3 font-medium text-primary transition-colors duration-300 hover:bg-primary/10"
           >
             Contact Me
           </a>
@@ -135,7 +135,7 @@ const heroSocials = computed(() => [
           <a
             :href="profile.resumeUrl"
             download
-            class="group inline-flex items-center gap-2 rounded-full border border-default px-8 py-3 font-medium text-highlighted transition-colors duration-300 hover:border-primary hover:text-primary"
+            class="group inline-flex items-center gap-2 rounded-pill border border-default px-8 py-3 font-medium text-highlighted transition-colors duration-300 hover:border-primary hover:text-primary"
           >
             <UIcon
               name="i-lucide-download"
@@ -174,7 +174,7 @@ const heroSocials = computed(() => [
         </ul>
         <button
           type="button"
-          class="hidden items-center gap-2 rounded-full border border-default bg-muted/40 px-4 py-1.5 font-mono text-xs text-muted transition-colors hover:border-primary/40 hover:text-primary sm:inline-flex"
+          class="hidden items-center gap-2 rounded-pill border border-default bg-muted/40 px-4 py-1.5 font-mono text-xs text-muted transition-colors hover:border-primary/40 hover:text-primary sm:inline-flex"
           @click="togglePalette"
         >
           <UIcon
@@ -182,8 +182,8 @@ const heroSocials = computed(() => [
             class="size-[13px]"
           />
           Press
-          <kbd class="rounded bg-muted px-1.5 py-0.5">{{ isMac ? '⌘' : 'Ctrl' }}</kbd>
-          <kbd class="rounded bg-muted px-1.5 py-0.5">K</kbd>
+          <kbd class="rounded-sm bg-muted px-1.5 py-0.5">{{ isMac ? '⌘' : 'Ctrl' }}</kbd>
+          <kbd class="rounded-sm bg-muted px-1.5 py-0.5">K</kbd>
           to explore
         </button>
       </Motion>

@@ -82,7 +82,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Languages & Frameworks',
     icon: 'i-lucide-code-xml',
-    skills: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'TypeScript', 'Vue.js', 'Nuxt','React'],
+    skills: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'TypeScript', 'Vue.js', 'Nuxt', 'React'],
   },
   {
     title: 'Styling & UI',
@@ -92,7 +92,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Tools & Practices',
     icon: 'i-lucide-wrench',
-    skills: ['Git', 'GitHub', 'REST APIs', 'JWT / OAuth', 'Clean Code', 'Technical Writing' , 'Vibe Coding AI'],
+    skills: ['Git', 'GitHub', 'REST APIs', 'JWT / OAuth', 'Clean Code', 'Technical Writing', 'Vibe Coding AI'],
   },
 ]
 

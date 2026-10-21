@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { THEME_FONTS } from './shared/types/theme'
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/ui',
@@ -52,9 +54,14 @@ export default defineNuxtConfig({
   },
 
   fonts: {
+    // Fonts are referenced through CSS variables, so they're registered globally.
+    // Only the defaults are preloaded; the Theme Builder options download on first use.
     families: [
-      { name: 'Inter', weights: [300, 400, 500, 600, 700, 800] },
-      { name: 'JetBrains Mono', weights: [400, 500, 600, 700] },
+      { name: 'Inter', weights: [300, 400, 500, 600, 700, 800], global: true },
+      { name: 'JetBrains Mono', weights: [400, 500, 600, 700], global: true },
+      ...THEME_FONTS.filter(name => name !== 'Inter').map(name => ({
+        name, weights: [400, 500, 600, 700], global: true, preload: false,
+      })),
     ],
   },
 

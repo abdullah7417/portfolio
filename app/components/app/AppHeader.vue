@@ -37,7 +37,7 @@ onMounted(() => (isMac.value = /Mac|iPhone|iPad/.test(navigator.userAgent)))
           >
             <a
               :href="`#${item.id}`"
-              class="relative z-10 block rounded-full px-3 py-1.5 text-sm transition-colors duration-200"
+              class="relative z-10 block rounded-pill px-3 py-1.5 text-sm transition-colors duration-200"
               :class="active === item.id ? 'text-primary' : 'text-muted hover:text-highlighted'"
               :aria-current="active === item.id ? 'true' : undefined"
             >
@@ -47,7 +47,7 @@ onMounted(() => (isMac.value = /Mac|iPhone|iPad/.test(navigator.userAgent)))
               v-if="active === item.id"
               as="span"
               layout-id="nav-pill"
-              class="absolute inset-0 rounded-full border border-primary/20 bg-primary/10"
+              class="absolute inset-0 rounded-pill border border-primary/20 bg-primary/10"
               :transition="{ type: 'spring', stiffness: 380, damping: 32 }"
             />
           </li>
@@ -57,7 +57,7 @@ onMounted(() => (isMac.value = /Mac|iPhone|iPad/.test(navigator.userAgent)))
           v-if="profile.resumeUrl"
           :href="profile.resumeUrl"
           download
-          class="inline-flex h-9 items-center gap-2 rounded-full border border-primary/40 px-3 text-sm text-primary transition-colors hover:bg-primary/10"
+          class="inline-flex h-9 items-center gap-2 rounded-pill border border-primary/40 px-3 text-sm text-primary transition-colors hover:bg-primary/10"
         >
           <UIcon
             name="i-lucide-download"
@@ -68,7 +68,7 @@ onMounted(() => (isMac.value = /Mac|iPhone|iPad/.test(navigator.userAgent)))
 
         <button
           type="button"
-          class="inline-flex h-9 items-center gap-2 rounded-full border border-default bg-muted/50 px-3 font-mono text-xs text-muted transition-colors hover:border-primary/40 hover:text-primary"
+          class="inline-flex h-9 items-center gap-2 rounded-pill border border-default bg-muted/50 px-3 font-mono text-xs text-muted transition-colors hover:border-primary/40 hover:text-primary"
           aria-label="Open command palette"
           @click="togglePalette"
         >

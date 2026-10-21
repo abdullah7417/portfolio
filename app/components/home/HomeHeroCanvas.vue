@@ -14,18 +14,10 @@ let particles: Particle[] = []
 let width = 0
 let height = 0
 let frame = 0
-let color = '43 212 189'
+// Particle color follows the active theme's primary ("r g b" for alpha blending)
+const { activeColors } = useTheme()
+const color = computed(() => hexToRgb(activeColors.value.primary))
 const mouse = { x: -9999, y: -9999 }
-
-function readColor() {
-  // --ui-primary resolves to a color; parse it into "r g b" for alpha blending
-  const probe = document.createElement('span')
-  probe.style.color = 'var(--ui-primary)'
-  document.body.appendChild(probe)
-  const rgb = getComputedStyle(probe).color.match(/[\d.]+/g)
-  probe.remove()
-  if (rgb && rgb.length >= 3) color = rgb.slice(0, 3).join(' ')
-}
 
 function resize() {
   const el = canvas.value
@@ -85,7 +77,7 @@ function step() {
       const b = particles[j]!
       const d = Math.hypot(a.x - b.x, a.y - b.y)
       if (d < LINK_DISTANCE) {
-        ctx.strokeStyle = `rgb(${color} / ${(1 - d / LINK_DISTANCE) * 0.22})`
+        ctx.strokeStyle = `rgb(${color.value} / ${(1 - d / LINK_DISTANCE) * 0.22})`
         ctx.beginPath()
         ctx.moveTo(a.x, a.y)
         ctx.lineTo(b.x, b.y)
@@ -94,13 +86,13 @@ function step() {
     }
     const md = Math.hypot(a.x - mouse.x, a.y - mouse.y)
     if (md < MOUSE_DISTANCE) {
-      ctx.strokeStyle = `rgb(${color} / ${(1 - md / MOUSE_DISTANCE) * 0.55})`
+      ctx.strokeStyle = `rgb(${color.value} / ${(1 - md / MOUSE_DISTANCE) * 0.55})`
       ctx.beginPath()
       ctx.moveTo(a.x, a.y)
       ctx.lineTo(mouse.x, mouse.y)
       ctx.stroke()
     }
-    ctx.fillStyle = `rgb(${color} / 0.7)`
+    ctx.fillStyle = `rgb(${color.value} / 0.7)`
     ctx.beginPath()
     ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2)
     ctx.fill()
@@ -124,10 +116,8 @@ useEventListener('pointermove', (event: PointerEvent) => {
 }, { passive: true })
 
 useResizeObserver(() => canvas.value?.parentElement, useDebounceFn(resize, 150))
-useMutationObserver(() => document.documentElement, readColor, { attributes: true, attributeFilter: ['class'] })
 
 onMounted(() => {
-  readColor()
   resize()
   if (running.value) frame = requestAnimationFrame(step)
 })

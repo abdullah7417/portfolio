@@ -24,7 +24,7 @@ const props = defineProps<{ project: Project | null }>()
           icon="i-lucide-x"
           color="neutral"
           variant="ghost"
-          class="absolute top-4 right-4 rounded-full"
+          class="absolute top-4 right-4 rounded-pill"
           aria-label="Close"
           @click="close"
         />
@@ -109,7 +109,7 @@ const props = defineProps<{ project: Project | null }>()
           <li
             v-for="tag in props.project.tags"
             :key="tag"
-            class="rounded bg-muted px-2 py-1 font-mono text-xs text-primary"
+            class="rounded-sm bg-muted px-2 py-1 font-mono text-xs text-primary"
           >
             {{ tag }}
           </li>
@@ -121,7 +121,7 @@ const props = defineProps<{ project: Project | null }>()
             :href="props.project.codeUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 rounded-full bg-muted px-4 py-2 text-sm text-highlighted transition-colors hover:bg-accented"
+            class="inline-flex items-center gap-2 rounded-pill bg-muted px-4 py-2 text-sm text-highlighted transition-colors hover:bg-accented"
           >
             <UIcon
               name="i-simple-icons-github"
@@ -134,7 +134,7 @@ const props = defineProps<{ project: Project | null }>()
             :href="props.project.liveUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="bg-gradient-primary inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm text-inverted transition-shadow hover:shadow-glow"
+            class="btn-gradient inline-flex items-center gap-2 rounded-pill px-4 py-2 text-sm"
           >
             <UIcon
               name="i-lucide-external-link"

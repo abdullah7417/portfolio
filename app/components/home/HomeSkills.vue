@@ -36,7 +36,7 @@ import { skillGroups } from '~/data/portfolio'
                 v-for="(skill, index) in group.skills"
                 :key="skill"
                 as="li"
-                class="cursor-default rounded-full border border-default bg-muted/60 px-3 py-1.5 font-mono text-xs text-default/90 transition-colors hover:border-primary/50 hover:bg-primary/10 hover:text-primary md:text-sm"
+                class="cursor-default rounded-pill border border-default bg-muted/60 px-3 py-1.5 font-mono text-xs text-default/90 transition-colors hover:border-primary/50 hover:bg-primary/10 hover:text-primary md:text-sm"
                 :initial="{ opacity: 0, scale: 0.8, y: 8 }"
                 :while-in-view="{ opacity: 1, scale: 1, y: 0 }"
                 :in-view-options="{ once: true, margin: '-40px' }"

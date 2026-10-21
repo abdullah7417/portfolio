@@ -2,10 +2,12 @@
 @import "@nuxt/ui";
 
 @theme static {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  /* Fonts follow the theme (plugins/theme.ts); the fallbacks are the default stack */
+  --font-sans: var(--theme-font-body, "Inter", ui-sans-serif, system-ui, sans-serif);
+  --font-heading: var(--theme-font-heading, var(--font-sans));
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  /* Brand teal: 400 is the dark-mode primary, 500 the light-mode primary */
+  /* Brand teal palette for Nuxt UI's app.config `primary`; the live primary comes from the theme */
   --color-brand-50: #effefb;
   --color-brand-100: #c8fff4;
   --color-brand-200: #91fee9;
@@ -18,9 +20,6 @@
   --color-brand-900: #184a44;
   --color-brand-950: #072c29;
 
-  /* Secondary accent used in gradients, blobs and the timeline */
-  --color-azure: hsl(200 80% 55%);
-
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
 
   --animate-marquee: marquee 35s linear infinite;
@@ -32,66 +31,81 @@
   }
 }
 
-/* Light theme */
+@theme inline {
+  --color-on-primary: var(--theme-on-primary);
+
+  /*
+   * Nuxt UI compiles the radius scale as multiples of --ui-radius; point it at the
+   * theme's radius tokens instead. Fallbacks equal the original design (--ui-radius: 0.5rem).
+   */
+  --radius-sm: var(--theme-radius-sm, 0.25rem);
+  --radius-md: var(--theme-radius-md, 0.75rem);
+  --radius-lg: var(--theme-radius-md, 0.75rem);
+  --radius-xl: var(--theme-radius-lg, 1.5rem);
+  --radius-2xl: var(--theme-radius-xl, 2rem);
+  --radius-3xl: var(--theme-radius-card, 2rem);
+}
+
+/*
+ * Base tokens (--ui-primary, --ui-secondary, --theme-accent, --ui-bg, --ui-bg-elevated,
+ * --ui-text, --ui-text-muted, --ui-border, --theme-primary-hover, --theme-on-primary,
+ * fonts, weights, radii and border width/style) are written by plugins/theme.ts from
+ * the theme in app/utils/theme.ts. Everything below is derived from them.
+ */
+
+/* Light mode */
 :root {
   --ui-radius: 0.5rem;
 
-  --ui-bg: hsl(210 40% 98%);
-  --ui-bg-muted: hsl(210 30% 94%);
-  --ui-bg-elevated: hsl(0 0% 100%);
-  --ui-bg-accented: hsl(210 30% 92%);
-  --ui-bg-inverted: hsl(222 47% 11%);
+  --ui-bg-muted: color-mix(in srgb, var(--ui-bg), var(--ui-text) 5%);
+  --ui-bg-accented: color-mix(in srgb, var(--ui-bg), var(--ui-text) 8%);
+  --ui-bg-inverted: var(--ui-text);
 
-  --ui-text: hsl(222 47% 11%);
-  --ui-text-highlighted: hsl(222 47% 8%);
-  --ui-text-toned: hsl(222 47% 20%);
-  --ui-text-muted: hsl(215 16% 40%);
-  --ui-text-dimmed: hsl(215 16% 52%);
-  --ui-text-inverted: hsl(0 0% 100%);
+  --ui-text-highlighted: color-mix(in srgb, var(--ui-text), #000 25%);
+  --ui-text-toned: color-mix(in srgb, var(--ui-text), var(--ui-text-muted) 15%);
+  --ui-text-dimmed: color-mix(in srgb, var(--ui-text-muted), var(--ui-bg) 15%);
+  --ui-text-inverted: var(--ui-bg);
 
-  --ui-border: hsl(214 20% 88%);
-  --ui-border-muted: hsl(214 20% 92%);
-  --ui-border-accented: hsl(214 20% 80%);
-  --ui-border-inverted: hsl(222 47% 11%);
+  --ui-border-muted: color-mix(in srgb, var(--ui-border), var(--ui-bg) 35%);
+  --ui-border-accented: color-mix(in srgb, var(--ui-border), var(--ui-text) 10%);
+  --ui-border-inverted: var(--ui-text);
 
-  --gradient-primary: linear-gradient(135deg, hsl(172 66% 40%), hsl(200 80% 48%));
-  --text-gradient: linear-gradient(135deg, hsl(172 66% 35%), hsl(200 80% 45%));
-  --glass-bg: hsl(0 0% 100% / 0.75);
-  --glass-border: hsl(222 47% 11% / 0.08);
-  --glass-shadow: 0 8px 32px hsl(222 47% 11% / 0.08);
-  --glow-primary: 0 0 20px hsl(172 66% 40% / 0.2);
-  --scrollbar-track: hsl(210 40% 96%);
-  --scrollbar-thumb: hsl(215 20% 80%);
+  --glass-bg: color-mix(in srgb, var(--ui-bg-elevated) 75%, transparent);
+  --glass-shadow: 0 8px 32px color-mix(in srgb, var(--ui-text) 8%, transparent);
+  --glow-strength: 20%;
+  --scrollbar-thumb: color-mix(in srgb, var(--ui-border), var(--ui-text) 15%);
 }
 
-/* Dark theme (default) */
+/* Dark mode (default) */
 .dark {
-  --ui-bg: hsl(222 47% 6%);
-  --ui-bg-muted: hsl(222 30% 14%);
-  --ui-bg-elevated: hsl(222 40% 10%);
-  --ui-bg-accented: hsl(222 30% 18%);
-  --ui-bg-inverted: hsl(210 20% 90%);
+  --ui-bg-muted: color-mix(in srgb, var(--ui-bg-elevated), var(--ui-text) 5%);
+  --ui-bg-accented: color-mix(in srgb, var(--ui-bg-elevated), var(--ui-text) 9%);
+  --ui-bg-inverted: var(--ui-text);
 
-  --ui-text: hsl(210 20% 90%);
-  --ui-text-highlighted: hsl(210 20% 96%);
-  --ui-text-toned: hsl(210 20% 80%);
-  --ui-text-muted: hsl(215 15% 55%);
-  --ui-text-dimmed: hsl(215 15% 45%);
-  --ui-text-inverted: hsl(222 47% 6%);
+  --ui-text-highlighted: color-mix(in srgb, var(--ui-text), #fff 55%);
+  --ui-text-toned: color-mix(in srgb, var(--ui-text), var(--ui-text-muted) 20%);
+  --ui-text-dimmed: color-mix(in srgb, var(--ui-text-muted), var(--ui-bg) 20%);
+  --ui-text-inverted: var(--ui-bg);
 
-  --ui-border: hsl(222 20% 18%);
-  --ui-border-muted: hsl(222 20% 14%);
-  --ui-border-accented: hsl(222 20% 24%);
-  --ui-border-inverted: hsl(210 20% 90%);
+  --ui-border-muted: color-mix(in srgb, var(--ui-border), var(--ui-bg) 35%);
+  --ui-border-accented: color-mix(in srgb, var(--ui-border), var(--ui-text) 10%);
+  --ui-border-inverted: var(--ui-text);
 
-  --gradient-primary: linear-gradient(135deg, hsl(172 66% 50%), hsl(200 80% 55%));
-  --text-gradient: linear-gradient(135deg, hsl(172 66% 50%), hsl(200 80% 60%));
-  --glass-bg: hsl(222 40% 10% / 0.6);
-  --glass-border: hsl(210 20% 90% / 0.08);
+  --glass-bg: color-mix(in srgb, var(--ui-bg-elevated) 60%, transparent);
   --glass-shadow: 0 8px 32px hsl(0 0% 0% / 0.3);
-  --glow-primary: 0 0 20px hsl(172 66% 50% / 0.3);
-  --scrollbar-track: hsl(222 47% 6%);
-  --scrollbar-thumb: hsl(222 30% 20%);
+  --glow-strength: 30%;
+  --scrollbar-thumb: color-mix(in srgb, var(--ui-border), var(--ui-text) 6%);
+}
+
+/* Derived tokens shared by both modes */
+:root,
+.dark {
+  --gradient-primary: linear-gradient(135deg, var(--ui-primary), var(--ui-secondary));
+  --gradient-primary-hover: linear-gradient(135deg, var(--theme-primary-hover), var(--ui-secondary));
+  --text-gradient: linear-gradient(135deg, var(--ui-primary), var(--theme-accent));
+  --glass-border: color-mix(in srgb, var(--ui-text) 8%, transparent);
+  --glow-primary: 0 0 20px color-mix(in srgb, var(--ui-primary) var(--glow-strength), transparent);
+  --scrollbar-track: var(--ui-bg);
 }
 
 @layer base {
@@ -102,6 +116,23 @@
 
   body {
     @apply bg-default text-default antialiased;
+    font-weight: var(--font-weight-normal, 400);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+
+  /* Every Tailwind `border*` utility draws in the theme's border style */
+  *,
+  ::before,
+  ::after {
+    --tw-border-style: var(--theme-border-style, solid);
   }
 
   ::selection {
@@ -132,13 +163,40 @@
   }
 }
 
+/* Hairline borders follow the theme's border width (border-2 etc. stay as written) */
+@utility border {
+  border-width: var(--theme-border-width, 1px);
+}
+
+@utility border-t {
+  border-top-width: var(--theme-border-width, 1px);
+}
+
+@utility border-b {
+  border-bottom-width: var(--theme-border-width, 1px);
+}
+
+@utility border-y {
+  border-block-width: var(--theme-border-width, 1px);
+}
+
 /* Reusable primitives Tailwind cannot express on its own */
 @utility glass-card {
   background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  border: var(--theme-border-width, 1px) var(--theme-border-style, solid) var(--glass-border);
   box-shadow: var(--glass-shadow);
   backdrop-filter: blur(16px);
-  border-radius: 2rem;
+  border-radius: var(--theme-radius-card, 2rem);
+}
+
+/* Pill-shaped controls (buttons, chips, inputs). Real circles keep `rounded-full`. */
+@utility rounded-pill {
+  border-radius: var(--theme-radius-pill, 9999px);
+}
+
+/* Tall controls such as textareas: follow the pill radius, capped so they stay boxy */
+@utility rounded-pill-box {
+  border-radius: min(var(--theme-radius-pill, 9999px), 1.5rem);
 }
 
 @utility text-gradient {
@@ -154,6 +212,18 @@
 
 @utility shadow-glow {
   box-shadow: var(--glow-primary);
+}
+
+/* Primary call-to-action: gradient fill, theme hover color and glow */
+@utility btn-gradient {
+  background: var(--gradient-primary);
+  color: var(--theme-on-primary);
+  transition: box-shadow 300ms;
+
+  &:hover {
+    background: var(--gradient-primary-hover);
+    box-shadow: var(--glow-primary);
+  }
 }
 
 @utility bg-grid {
