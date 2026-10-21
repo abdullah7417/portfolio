@@ -4,7 +4,7 @@ import type { Education, Experience, NavItem, Profile, Project, Service, SkillGr
 export const profile: Profile = {
   firstName: 'Abdullah',
   lastName: 'Mohamed',
-  logo: '<Abdullah.dev />',
+  logo: '<Abdullah/>',
   title: 'Frontend Developer',
   roles: [
     'Frontend Developer',
