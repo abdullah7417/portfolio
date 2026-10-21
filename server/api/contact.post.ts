@@ -27,17 +27,19 @@ export default defineEventHandler(async (event) => {
   assertRateLimit(event)
 
   const { name, email, message } = result.data
+  // Providers only send from a verified domain, so show the visitor's name and reply to their address
+  const fromAddress = contactFromEmail.match(/<(.+)>/)?.[1] ?? contactFromEmail
 
   try {
     await $fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { Authorization: `Bearer ${resendApiKey}` },
       body: {
-        from: contactFromEmail,
+        from: `${name.replace(/["<>]/g, '')} <${fromAddress}>`,
         to: [contactToEmail],
         reply_to: email,
-        subject: `Portfolio message from ${name}`,
-        text: `${message}\n\n— ${name} (${email})`,
+        subject: 'New Message From Portfolio',
+        text: message,
       },
     })
   }
