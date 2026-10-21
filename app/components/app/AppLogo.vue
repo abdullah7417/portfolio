@@ -9,5 +9,6 @@ import { profile } from '~/data/portfolio'
     :aria-label="`${profile.firstName} ${profile.lastName}, back to top`"
   >
     {{ profile.logo }}
+    
   </a>
 </template>
