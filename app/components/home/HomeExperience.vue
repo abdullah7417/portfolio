@@ -37,7 +37,7 @@ function toggle(index: number) {
         <Motion
           as="span"
           aria-hidden="true"
-          class="absolute top-0 bottom-0 left-4 w-0.5 -translate-x-1/2 shadow-[0_0_12px_color-mix(in_oklab,var(--ui-primary)_60%,transparent)] [background:linear-gradient(to_bottom,var(--ui-primary),var(--color-azure))] md:left-1/2"
+          class="absolute top-0 bottom-0 left-4 w-0.5 -translate-x-1/2 shadow-[0_0_12px_color-mix(in_oklab,var(--ui-primary)_60%,transparent)] [background:linear-gradient(to_bottom,var(--ui-primary),var(--ui-secondary))] md:left-1/2"
           :style="{ scaleY, originY: 0 }"
         />
 

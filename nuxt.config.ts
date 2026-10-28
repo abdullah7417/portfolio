@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     head: {
       titleTemplate: '%s',
       meta: [
-        { name: 'theme-color', content: '#07101f' },
+        { name: 'theme-color', content: '#0a0a0a' },
         { name: 'author', content: 'Abdullah Mohamed' },
       ],
       link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
@@ -54,6 +54,7 @@ export default defineNuxtConfig({
   fonts: {
     families: [
       { name: 'Inter', weights: [300, 400, 500, 600, 700, 800] },
+      { name: 'Space Grotesk', weights: [400, 500, 600, 700] },
       { name: 'JetBrains Mono', weights: [400, 500, 600, 700] },
     ],
   },

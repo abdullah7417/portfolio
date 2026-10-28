@@ -3,23 +3,21 @@
 
 @theme static {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Space Grotesk", var(--font-sans);
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  /* Brand teal: 400 is the dark-mode primary, 500 the light-mode primary */
-  --color-brand-50: #effefb;
-  --color-brand-100: #c8fff4;
-  --color-brand-200: #91fee9;
-  --color-brand-300: #53f5db;
-  --color-brand-400: #2bd4bd;
-  --color-brand-500: #23aa97;
-  --color-brand-600: #1b8a7b;
-  --color-brand-700: #196e63;
-  --color-brand-800: #185951;
-  --color-brand-900: #184a44;
-  --color-brand-950: #072c29;
-
-  /* Secondary accent used in gradients, blobs and the timeline */
-  --color-azure: hsl(200 80% 55%);
+  /* Monochrome brand scale for Nuxt UI's app.config `primary`; the live primary is set below */
+  --color-brand-50: #fafafa;
+  --color-brand-100: #f5f5f5;
+  --color-brand-200: #e5e5e5;
+  --color-brand-300: #d4d4d4;
+  --color-brand-400: #a3a3a3;
+  --color-brand-500: #737373;
+  --color-brand-600: #525252;
+  --color-brand-700: #404040;
+  --color-brand-800: #262626;
+  --color-brand-900: #171717;
+  --color-brand-950: #0a0a0a;
 
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -32,66 +30,75 @@
   }
 }
 
-/* Light theme */
+/* Light theme: black on white */
 :root {
   --ui-radius: 0.5rem;
 
-  --ui-bg: hsl(210 40% 98%);
-  --ui-bg-muted: hsl(210 30% 94%);
-  --ui-bg-elevated: hsl(0 0% 100%);
-  --ui-bg-accented: hsl(210 30% 92%);
-  --ui-bg-inverted: hsl(222 47% 11%);
+  /* Override Nuxt UI's primary/secondary (500 / 400 shades) with the monochrome identity */
+  --ui-primary: #171717;
+  --ui-secondary: #525252;
+  --theme-accent: #737373;
 
-  --ui-text: hsl(222 47% 11%);
-  --ui-text-highlighted: hsl(222 47% 8%);
-  --ui-text-toned: hsl(222 47% 20%);
-  --ui-text-muted: hsl(215 16% 40%);
-  --ui-text-dimmed: hsl(215 16% 52%);
-  --ui-text-inverted: hsl(0 0% 100%);
+  --ui-bg: #fafafa;
+  --ui-bg-muted: #f0f0f0;
+  --ui-bg-elevated: #ffffff;
+  --ui-bg-accented: #e8e8e8;
+  --ui-bg-inverted: #171717;
 
-  --ui-border: hsl(214 20% 88%);
-  --ui-border-muted: hsl(214 20% 92%);
-  --ui-border-accented: hsl(214 20% 80%);
-  --ui-border-inverted: hsl(222 47% 11%);
+  --ui-text: #171717;
+  --ui-text-highlighted: #000000;
+  --ui-text-toned: #262626;
+  --ui-text-muted: #636363;
+  --ui-text-dimmed: #7a7a7a;
+  --ui-text-inverted: #ffffff;
 
-  --gradient-primary: linear-gradient(135deg, hsl(172 66% 40%), hsl(200 80% 48%));
-  --text-gradient: linear-gradient(135deg, hsl(172 66% 35%), hsl(200 80% 45%));
+  --ui-border: #e5e5e5;
+  --ui-border-muted: #ededed;
+  --ui-border-accented: #d4d4d4;
+  --ui-border-inverted: #171717;
+
+  --gradient-primary: linear-gradient(135deg, var(--ui-primary), var(--ui-secondary));
+  --text-gradient: linear-gradient(135deg, var(--ui-primary), var(--theme-accent));
   --glass-bg: hsl(0 0% 100% / 0.75);
-  --glass-border: hsl(222 47% 11% / 0.08);
-  --glass-shadow: 0 8px 32px hsl(222 47% 11% / 0.08);
-  --glow-primary: 0 0 20px hsl(172 66% 40% / 0.2);
-  --scrollbar-track: hsl(210 40% 96%);
-  --scrollbar-thumb: hsl(215 20% 80%);
+  --glass-border: hsl(0 0% 9% / 0.08);
+  --glass-shadow: 0 8px 32px hsl(0 0% 9% / 0.08);
+  --glow-primary: 0 0 20px hsl(0 0% 9% / 0.2);
+  --scrollbar-track: #f5f5f5;
+  --scrollbar-thumb: #d4d4d4;
 }
 
-/* Dark theme (default) */
+/* Dark theme (default): white on black with silver gradients */
 .dark {
-  --ui-bg: hsl(222 47% 6%);
-  --ui-bg-muted: hsl(222 30% 14%);
-  --ui-bg-elevated: hsl(222 40% 10%);
-  --ui-bg-accented: hsl(222 30% 18%);
-  --ui-bg-inverted: hsl(210 20% 90%);
+  --ui-primary: #f5f5f5;
+  --ui-secondary: #a3a3a3;
+  --theme-accent: #9ca3af;
 
-  --ui-text: hsl(210 20% 90%);
-  --ui-text-highlighted: hsl(210 20% 96%);
-  --ui-text-toned: hsl(210 20% 80%);
-  --ui-text-muted: hsl(215 15% 55%);
-  --ui-text-dimmed: hsl(215 15% 45%);
-  --ui-text-inverted: hsl(222 47% 6%);
+  --ui-bg: #0a0a0a;
+  --ui-bg-muted: #1c1c1c;
+  --ui-bg-elevated: #121212;
+  --ui-bg-accented: #242424;
+  --ui-bg-inverted: #e5e5e5;
 
-  --ui-border: hsl(222 20% 18%);
-  --ui-border-muted: hsl(222 20% 14%);
-  --ui-border-accented: hsl(222 20% 24%);
-  --ui-border-inverted: hsl(210 20% 90%);
+  --ui-text: #e5e5e5;
+  --ui-text-highlighted: #ffffff;
+  --ui-text-toned: #d4d4d4;
+  --ui-text-muted: #8a8a8a;
+  --ui-text-dimmed: #6b6b6b;
+  --ui-text-inverted: #0a0a0a;
 
-  --gradient-primary: linear-gradient(135deg, hsl(172 66% 50%), hsl(200 80% 55%));
-  --text-gradient: linear-gradient(135deg, hsl(172 66% 50%), hsl(200 80% 60%));
-  --glass-bg: hsl(222 40% 10% / 0.6);
-  --glass-border: hsl(210 20% 90% / 0.08);
+  --ui-border: #262626;
+  --ui-border-muted: #1f1f1f;
+  --ui-border-accented: #333333;
+  --ui-border-inverted: #e5e5e5;
+
+  --gradient-primary: linear-gradient(135deg, var(--ui-primary), var(--ui-secondary));
+  --text-gradient: linear-gradient(135deg, var(--ui-primary), var(--theme-accent));
+  --glass-bg: hsl(0 0% 7% / 0.6);
+  --glass-border: hsl(0 0% 90% / 0.08);
   --glass-shadow: 0 8px 32px hsl(0 0% 0% / 0.3);
-  --glow-primary: 0 0 20px hsl(172 66% 50% / 0.3);
-  --scrollbar-track: hsl(222 47% 6%);
-  --scrollbar-thumb: hsl(222 30% 20%);
+  --glow-primary: 0 0 20px hsl(0 0% 96% / 0.25);
+  --scrollbar-track: #0a0a0a;
+  --scrollbar-thumb: #2e2e2e;
 }
 
 @layer base {
@@ -102,6 +109,15 @@
 
   body {
     @apply bg-default text-default antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
   }
 
   ::selection {

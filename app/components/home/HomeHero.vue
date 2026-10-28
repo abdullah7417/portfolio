@@ -55,7 +55,7 @@ const heroSocials = computed(() => [
       >
         <Motion
           as="div"
-          class="size-full rounded-full opacity-25 blur-2xl [background:radial-gradient(circle,color-mix(in_oklab,var(--color-azure)_45%,transparent),transparent_70%)]"
+          class="size-full rounded-full opacity-25 blur-2xl [background:radial-gradient(circle,color-mix(in_oklab,var(--ui-secondary)_45%,transparent),transparent_70%)]"
           :animate="reduced === 'reduce' ? undefined : { x: [0, -20, 0], y: [0, 30, 0], scale: [1, 1.15, 1] }"
           :transition="{ duration: 25, repeat: Infinity, ease: 'easeInOut' }"
         />
