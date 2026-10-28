@@ -17,7 +17,7 @@ onMounted(() => (isMac.value = /Mac|iPhone|iPad/.test(navigator.userAgent)))
 const fadeUp = { opacity: 0, y: 20 }
 const shown = { opacity: 1, y: 0 }
 const heroSocials = computed(() => [
-  ...profile.socials.filter(social => social.label === 'GitHub' || social.label === 'LinkedIn'),
+  ...profile.socials.filter(social => ['GitHub', 'LinkedIn', 'WhatsApp'].includes(social.label)),
   { label: 'Email', href: `mailto:${profile.email}`, icon: 'i-lucide-mail' },
 ])
 </script>

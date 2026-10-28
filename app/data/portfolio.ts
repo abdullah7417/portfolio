@@ -32,6 +32,7 @@ export const profile: Profile = {
   socials: [
     { label: 'GitHub', href: 'https://github.com/abdullah7417', icon: 'i-simple-icons-github' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/abdullah-mohamed72/', icon: 'i-simple-icons-linkedin' },
+    { label: 'WhatsApp', href: 'https://wa.me/201144484245', icon: 'i-simple-icons-whatsapp' },
     { label: 'Facebook', href: 'https://web.facebook.com/abdullah7422', icon: 'i-simple-icons-facebook' },
     { label: 'Instagram', href: 'https://www.instagram.com/abdullah.7417/', icon: 'i-simple-icons-instagram' },
   ],
