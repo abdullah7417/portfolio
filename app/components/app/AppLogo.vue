@@ -11,5 +11,4 @@ import { profile } from '~/data/portfolio'
     {{ profile.logo }}
     
   </a>
-  
 </template>
