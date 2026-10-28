@@ -6,6 +6,6 @@
     <AppHeader />
     <slot />
     <AppFooter />
-    <AppScrollToTop />
+    <AppFloatingActions />
   </div>
 </template>

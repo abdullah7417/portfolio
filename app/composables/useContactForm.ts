@@ -10,8 +10,8 @@ export function useContactForm() {
   const sent = ref(false)
 
   function openMailClient(payload: ContactInput) {
-    const subject = encodeURIComponent(`Portfolio message from ${payload.name}`)
-    const body = encodeURIComponent(`${payload.message}\n\n— ${payload.name} (${payload.email})`)
+    const subject = encodeURIComponent('New Message From Portfolio')
+    const body = encodeURIComponent(payload.message)
     window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`
   }
 
